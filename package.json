@@ -1,0 +1,17 @@
+{
+  "name": "cover-letter",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "parcel": "parcel",
+    "start": "parcel serve src/views/**/*.html"
+  },
+  "keywords": [],
+  "author": "Adrian Dinca",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "^1.12.3",
+    "sass": "^1.22.10"
+  }
+}

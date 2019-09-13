@@ -1,0 +1,41 @@
+@import './cube.scss';
+
+body {
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+$demo-width: 200px;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#demo {
+  width: 100%;
+  max-width: 300px;
+}
+
+// DEMO
+.cube__face {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2rem;
+}

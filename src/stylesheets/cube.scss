@@ -1,0 +1,21 @@
+.cube {
+  &-container {
+    width: 100%;
+  }
+
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: 0.5s transform ease;
+
+  &__face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: 1px solid #f43;
+    background: rgba(#38f, 0.5);
+  }
+}

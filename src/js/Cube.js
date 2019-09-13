@@ -56,29 +56,31 @@ export default class Cube {
   _placeFaces() {
     this._root.parentElement.style.perspective = `${this._width * 2}px`;
 
+    const faceScale = 3 / 4;
+    const faceWidth = this._width / 2;
     this._root.querySelector(
       '.cube__face--front'
-    ).style.transform = `rotateY(0deg) translateZ(${this._width / 2}px)`;
+    ).style.transform = `scale(${faceScale}) rotateY(0deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
       '.cube__face--right'
-    ).style.transform = `rotateY(90deg) translateZ(${this._width / 2}px)`;
+    ).style.transform = `scale(${faceScale}) rotateY(90deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
       '.cube__face--back'
-    ).style.transform = `rotateY(180deg) translateZ(${this._width / 2}px)`;
+    ).style.transform = `scale(${faceScale}) rotateY(180deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
       '.cube__face--left'
-    ).style.transform = `rotateY(-90deg) translateZ(${this._width / 2}px)`;
+    ).style.transform = `scale(${faceScale}) rotateY(-90deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
       '.cube__face--top'
-    ).style.transform = `rotateX(90deg) translateZ(${this._width / 2}px)`;
+    ).style.transform = `scale(${faceScale}) rotateX(90deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
       '.cube__face--bottom'
-    ).style.transform = `rotateX(-90deg) translateZ(${this._width / 2}px)`;
+    ).style.transform = `scale(${faceScale}) rotateX(-90deg) translateZ(${faceWidth}px)`;
   }
 
   /**

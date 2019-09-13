@@ -13,5 +13,9 @@
   "devDependencies": {
     "parcel": "^1.12.3",
     "sass": "^1.22.10"
+  },
+  "dependencies": {
+    "bulma": "^0.7.5",
+    "normalize.css": "^8.0.1"
   }
 }

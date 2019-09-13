@@ -1,4 +1,9 @@
 import Cube from './Cube';
 
-const cube = new Cube(document.querySelector('.cube'));
-setInterval(() => cube.roll('left'), 2000);
+document.querySelectorAll('.cube').forEach(element => {
+  const cube = new Cube(element);
+  setTimeout(
+    () => setInterval(() => cube.roll('top'), 5000),
+    1000 + Math.random() * 9000
+  );
+});

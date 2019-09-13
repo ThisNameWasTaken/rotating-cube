@@ -4,7 +4,8 @@ export default class Cube {
    */
   constructor(root) {
     this._root = root;
-    this._width = root.getBoundingClientRect().width;
+    this._innerElement = this._root.querySelector('.cube__inner');
+    this._width = this._root.getBoundingClientRect().width;
     this._rotation = {
       x: 0,
       y: 0,
@@ -13,11 +14,13 @@ export default class Cube {
     this._rotate();
 
     new ResizeObserver(() => {
-      this._width = root.parentElement.getBoundingClientRect().width;
+      this._width = this._root.getBoundingClientRect().width;
       this._placeFaces();
     }).observe(this._root);
 
-    this._root.addEventListener('transitionend', () => this._resetRotation());
+    this._innerElement.addEventListener('transitionend', () =>
+      this._resetRotation()
+    );
   }
 
   /**
@@ -55,7 +58,7 @@ export default class Cube {
    * @private
    */
   _placeFaces() {
-    this._root.parentElement.style.perspective = `${this._width * 2}px`;
+    this._root.style.perspective = `${this._width * 2}px`;
 
     const faceWidth = this._width / 2;
     this._root.querySelector(
@@ -88,7 +91,7 @@ export default class Cube {
    */
   _rotate() {
     const faceScale = 3 / 4;
-    this._root.style.transform = `scale(${faceScale}) rotateX(${this._rotation.x}deg) rotateY(${this._rotation.y}deg)`;
+    this._innerElement.style.transform = `scale(${faceScale}) rotateX(${this._rotation.x}deg) rotateY(${this._rotation.y}deg)`;
   }
 
   /**
@@ -96,13 +99,13 @@ export default class Cube {
    * Prevents number overflow by resetting numbers on animation rest
    */
   _resetRotation() {
-    this._root.style.transitionDuration = '0s';
+    this._innerElement.style.transitionDuration = '0s';
     requestAnimationFrame(() => {
       this._rotation.x %= 360;
       this._rotation.y %= 360;
       this._rotate();
       requestAnimationFrame(() => {
-        this._root.style.transitionDuration = '';
+        this._innerElement.style.transitionDuration = '';
       });
     });
   }

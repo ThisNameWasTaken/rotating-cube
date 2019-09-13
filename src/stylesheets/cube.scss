@@ -1,13 +1,13 @@
 .cube {
-  &-container {
-    width: 100%;
-  }
-
   width: 100%;
-  padding-top: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: 0.5s transform ease;
+
+  &__inner {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 0.5s transform ease;
+  }
 
   &__face {
     position: absolute;

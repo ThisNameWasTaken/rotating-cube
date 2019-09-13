@@ -10,9 +10,10 @@ export default class Cube {
       y: 0,
     };
     this._placeFaces();
+    this._rotate();
 
     new ResizeObserver(() => {
-      this._width = root.getBoundingClientRect().width;
+      this._width = root.parentElement.getBoundingClientRect().width;
       this._placeFaces();
     }).observe(this._root);
 
@@ -56,38 +57,38 @@ export default class Cube {
   _placeFaces() {
     this._root.parentElement.style.perspective = `${this._width * 2}px`;
 
-    const faceScale = 3 / 4;
     const faceWidth = this._width / 2;
     this._root.querySelector(
       '.cube__face--front'
-    ).style.transform = `scale(${faceScale}) rotateY(0deg) translateZ(${faceWidth}px)`;
+    ).style.transform = `rotateY(0deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
       '.cube__face--right'
-    ).style.transform = `scale(${faceScale}) rotateY(90deg) translateZ(${faceWidth}px)`;
+    ).style.transform = `rotateY(90deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
       '.cube__face--back'
-    ).style.transform = `scale(${faceScale}) rotateY(180deg) translateZ(${faceWidth}px)`;
+    ).style.transform = `rotateY(180deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
       '.cube__face--left'
-    ).style.transform = `scale(${faceScale}) rotateY(-90deg) translateZ(${faceWidth}px)`;
+    ).style.transform = `rotateY(-90deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
       '.cube__face--top'
-    ).style.transform = `scale(${faceScale}) rotateX(90deg) translateZ(${faceWidth}px)`;
+    ).style.transform = `rotateX(90deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
       '.cube__face--bottom'
-    ).style.transform = `scale(${faceScale}) rotateX(-90deg) translateZ(${faceWidth}px)`;
+    ).style.transform = `rotateX(-90deg) translateZ(${faceWidth}px)`;
   }
 
   /**
    * @private
    */
   _rotate() {
-    this._root.style.transform = `rotateX(${this._rotation.x}deg) rotateY(${this._rotation.y}deg)`;
+    const faceScale = 3 / 4;
+    this._root.style.transform = `scale(${faceScale}) rotateX(${this._rotation.x}deg) rotateY(${this._rotation.y}deg)`;
   }
 
   /**

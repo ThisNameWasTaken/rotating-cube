@@ -4,14 +4,14 @@ export default class Cube {
    */
   constructor(root) {
     this._root = root;
-    this._innerElement = this._root.querySelector('.cube__inner');
+    this._innerElement = this._root.querySelector(Cube.cssSelectors.inner);
     this._width = this._root.getBoundingClientRect().width;
     this._rotation = {
       x: 0,
       y: 0,
     };
     this._placeFaces();
-    this._rotate();
+    this._resetRotation();
 
     new ResizeObserver(() => {
       this._width = this._root.getBoundingClientRect().width;
@@ -62,27 +62,27 @@ export default class Cube {
 
     const faceWidth = this._width / 2;
     this._root.querySelector(
-      '.cube__face--front'
+      Cube.cssSelectors.frontFace
     ).style.transform = `rotateY(0deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
-      '.cube__face--right'
+      Cube.cssSelectors.rightFace
     ).style.transform = `rotateY(90deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
-      '.cube__face--back'
+      Cube.cssSelectors.backFace
     ).style.transform = `rotateY(180deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
-      '.cube__face--left'
+      Cube.cssSelectors.leftFace
     ).style.transform = `rotateY(-90deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
-      '.cube__face--top'
+      Cube.cssSelectors.topFace
     ).style.transform = `rotateX(90deg) translateZ(${faceWidth}px)`;
 
     this._root.querySelector(
-      '.cube__face--bottom'
+      Cube.cssSelectors.bottomFace
     ).style.transform = `rotateX(-90deg) translateZ(${faceWidth}px)`;
   }
 
@@ -110,3 +110,15 @@ export default class Cube {
     });
   }
 }
+
+Cube.cssSelectors = {
+  root: '.cube',
+  inner: '.cube__inner',
+  face: '.cube__face',
+  frontFace: '.cube__face--front',
+  backFace: '.cube__face--back',
+  leftFace: '.cube__face--left',
+  rightFace: '.cube__face--right',
+  topFace: '.cube__face--top',
+  bottomFace: '.cube__face--bottom',
+};

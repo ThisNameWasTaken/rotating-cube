@@ -11,7 +11,7 @@
   "author": "Adrian Dinca",
   "license": "MIT",
   "devDependencies": {
-    "parcel": "^1.12.3",
+    "parcel": "^2.8.2",
     "sass": "^1.22.10"
   },
   "dependencies": {
